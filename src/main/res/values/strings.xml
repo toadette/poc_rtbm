@@ -3,7 +3,5 @@
     <string name="app_name">Rtbm</string>
     <string name="image">Bild</string>
     <string name="person">Person</string>
-    <string name="totalpostscount">Posts</string>
-    <string name="card">Card</string>
-    <string name="access_token">sk.eyJ1IjoidG9hZGV0dGU4NyIsImEiOiJjaXUzenIyeG0wMDFmMnlwOGU1cXBucXBuIn0.z8-PPRvfPK39StSiU4m8Mg</string>
+    <string name="access_token">kfddk</string>
 </resources>
