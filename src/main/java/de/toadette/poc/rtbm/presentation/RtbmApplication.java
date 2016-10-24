@@ -2,8 +2,6 @@ package de.toadette.poc.rtbm.presentation;
 
 import android.app.Application;
 
-import com.mapbox.mapboxsdk.MapboxAccountManager;
-
 import dagger.ObjectGraph;
 
 public class RtbmApplication extends Application {

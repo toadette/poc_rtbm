@@ -6,13 +6,11 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.TextView;
 
 import com.mapbox.mapboxsdk.MapboxAccountManager;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
@@ -27,23 +25,21 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import javax.inject.Inject;
 
 import de.toadette.poc.rtbm.R;
-import de.toadette.poc.rtbm.domain.model.vip.Vip;
-import de.toadette.poc.rtbm.domain.model.vip.VipNotFoundException;
 import de.toadette.poc.rtbm.domain.model.vip.VipRepository;
 
 
 public class StartActivity extends FragmentActivity {
 
 
+    private static final int PERMISSIONS_LOCATION = 0;
     @Inject
     VipRepository vipRepository;
+    LocationServices locationServices;
+    FloatingActionButton floatingActionButton;
     private MapView mapView;
     private Location mLastLocation;
     private MapboxMap mapboxMap;
     private MapboxMap map;
-    LocationServices locationServices;
-    private static final int PERMISSIONS_LOCATION = 0;
-    FloatingActionButton floatingActionButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,11 +55,11 @@ public class StartActivity extends FragmentActivity {
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(MapboxMap mapboxMap) {
-                StartActivity.this.map=mapboxMap;
+                StartActivity.this.map = mapboxMap;
                 double latitude = 53.075804;
                 double longitude = 8.807184;
                 map.setCameraPosition(new CameraPosition.Builder()
-                        .target(new LatLng(latitude,longitude))
+                        .target(new LatLng(latitude, longitude))
                         .zoom(16)
                         .build());
                 mapboxMap.addMarker(new MarkerOptions()
@@ -72,7 +68,11 @@ public class StartActivity extends FragmentActivity {
                         .snippet("Welcome to my marker."));
 //                double latitude = 53.075804;
 //                double longitude = 8.807184;
-//                if (ActivityCompat.checkSelfPermission(StartActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(StartActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//                if (ActivityCompat.checkSelfPermission(StartActivity.this,
+// Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+// ActivityCompat.checkSelfPermission(StartActivity.this,
+// Manifest.permission.ACCESS_COARSE_LOCATION)
+// != PackageManager.PERMISSION_GRANTED) {
 //                    mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
 //                            mGoogleApiClient);
 //                }else {
@@ -102,18 +102,21 @@ public class StartActivity extends FragmentActivity {
             }
         });
     }
-private void setLocation(){
-    Location lastLocation1 = com.mapzen.android.lost.api.LocationServices.FusedLocationApi.getLastLocation();
-    Location lastLocation = locationServices.getLastLocation();
-    map.setCameraPosition(new CameraPosition.Builder()
-            .target(new LatLng(lastLocation))
-            .zoom(16)
-            .build());
-    map.addMarker(new MarkerOptions()
-            .position(new LatLng(lastLocation))
-            .title("Hello World!")
-            .snippet("Welcome to my marker."));
-}
+
+    private void setLocation() {
+        Location lastLocation1 = com.mapzen.android.lost.api.LocationServices.FusedLocationApi
+                .getLastLocation();
+        Location lastLocation = locationServices.getLastLocation();
+        map.setCameraPosition(new CameraPosition.Builder()
+                .target(new LatLng(lastLocation))
+                .zoom(16)
+                .build());
+        map.addMarker(new MarkerOptions()
+                .position(new LatLng(lastLocation))
+                .title("Hello World!")
+                .snippet("Welcome to my marker."));
+    }
+
     private void init() {
 //        TextView userNameTextView = (TextView) findViewById(R.id.userNameTextView);
 //        TextView postCountTextView = (TextView) findViewById(R.id.postsCountTextView);
@@ -200,14 +203,10 @@ private void setLocation(){
 
     @Override
     public void onRequestPermissionsResult(
-            int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case PERMISSIONS_LOCATION: {
-                if (grantResults.length > 0 &&
-                        grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    enableLocation(true);
-                }
-            }
+            int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == PERMISSIONS_LOCATION && grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            enableLocation(true);
         }
     }
 
