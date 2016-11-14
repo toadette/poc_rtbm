@@ -3,11 +3,10 @@
     <string name="app_name">Remember to buy milk</string>
     <string name="access_token">sk.eyJ1IjoidG9hZGV0dGU4NyIsImEiOiJjaXUzenIyeG0wMDFmMnlwOGU1cXBucXBuIn0.z8-PPRvfPK39StSiU4m8Mg</string>
     <string name="welcomeText">Hai Laxo Lax :) Hier ist deine Einkaufsliste :)</string>
-    <string name="describtion">Beschreibung</string>
-    <string name="describtion_item">Hmmm lecker %1$s!</string>
+    <string name="description">Beschreibung</string>
+    <string name="description_item">Hmmm lecker %1$s!</string>
     <string name="click">Klick</string>
     <string name="fake_call">Fake Call</string>
-    <string name="add">Add</string>
     <string name="add_new_item">Neuen Eintrag hinzufügen</string>
     <string name="go_to_map">Zur Karte</string>
 </resources>

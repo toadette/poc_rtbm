@@ -35,7 +35,7 @@ class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     public void onBindViewHolder(DataAdapter.ViewHolder viewHolder, int i) {
 
         viewHolder.textView1.setText(items.get(i));
-        String text = String.format(parent.getResources().getString(R.string.describtion_item),
+        String text = String.format(parent.getResources().getString(R.string.description_item),
                 items.get(i));
         viewHolder.textView2.setText(text);
     }

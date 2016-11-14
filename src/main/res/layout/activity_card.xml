@@ -18,7 +18,7 @@
         android:id="@+id/fakeCall"
         android:onClick="fakeCall"
         android:background="@color/mapbox_blue"
-        android:contentDescription="@string/describtion"
+        android:contentDescription="@string/description"
         android:text="@string/fake_call"
         android:src="@drawable/ic_announcement_white_24dp"
         />

@@ -48,6 +48,7 @@
             <ImageButton
                 android:id="@+id/openMap"
                 android:layout_width="30dp"
+                android:contentDescription="@string/description"
                 android:layout_height="wrap_content"
                 android:background="@color/mapbox_blue"
                 android:src="@drawable/ic_map_white_24dp"

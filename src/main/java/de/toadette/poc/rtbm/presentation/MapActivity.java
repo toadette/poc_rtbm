@@ -30,7 +30,7 @@ public class MapActivity extends FragmentActivity {
     private double latitude = 53.075804;
     private double longitude = 8.807184;
     private String name = "Default Marker";
-    private String describtion = "Beschreibung";
+    private String description = "Beschreibung";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,11 +43,9 @@ public class MapActivity extends FragmentActivity {
         if (getIntent().getExtras().get("name") != null) {
             name = getIntent().getExtras().getString("name");
         }
-        if (getIntent().getExtras().get("describtion") != null) {
-            describtion = getIntent().getExtras().getString("describtion");
+        if (getIntent().getExtras().get("description") != null) {
+            description = getIntent().getExtras().getString("description");
         }
-        TextView textView = (TextView) findViewById(R.id.textView);
-        textView.setText(name + ": " + describtion);
         mapView = (MapView) findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(new OnMapReadyCallback() {
@@ -61,26 +59,13 @@ public class MapActivity extends FragmentActivity {
                 mapboxMap.addMarker(new MarkerOptions()
                         .position(new LatLng(latitude, longitude))
                         .title(name)
-                        .snippet(describtion));
+                        .snippet(description));
 
             }
 
         });
     }
 
-//    private void setLocation() {
-//        map.setCameraPosition(new CameraPosition.Builder()
-//                .target(new LatLng(locationServices.getLastLocation()))
-//                .zoom(16)
-//                .build());
-//        map.addMarker(new MarkerOptions()
-//                .position(new LatLng(locationServices.getLastLocation()))
-//                .title("Hello World!")
-//                .snippet("Welcome to my marker."));
-//    }
-
-
-    // Add the mapView lifecycle to the activity's lifecycle methods
     @Override
     public void onResume() {
         super.onResume();
