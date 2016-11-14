@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Remember to buy milk</string>
-    <string name="access_token">...</string>
+    <string name="access_token">ssss</string>
     <string name="welcomeText">Hai Laxo Lax :)</string>
     <string name="describtion">Beschreibung</string>
     <string name="click">Klick</string>

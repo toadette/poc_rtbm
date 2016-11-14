@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.toadette.poc.rtbm.R;
+import de.toadette.poc.rtbm.domain.model.shoppinglist.ShoppingCartItem;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -98,4 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
+    public void addNewItemToShoppingList(View view) {
+        items.add("test");
+    }
 }

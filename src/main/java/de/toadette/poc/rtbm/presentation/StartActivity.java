@@ -69,16 +69,16 @@ public class StartActivity extends FragmentActivity {
         });
     }
 
-    private void setLocation() {
-        map.setCameraPosition(new CameraPosition.Builder()
-                .target(new LatLng(locationServices.getLastLocation()))
-                .zoom(16)
-                .build());
-        map.addMarker(new MarkerOptions()
-                .position(new LatLng(locationServices.getLastLocation()))
-                .title("Hello World!")
-                .snippet("Welcome to my marker."));
-    }
+//    private void setLocation() {
+//        map.setCameraPosition(new CameraPosition.Builder()
+//                .target(new LatLng(locationServices.getLastLocation()))
+//                .zoom(16)
+//                .build());
+//        map.addMarker(new MarkerOptions()
+//                .position(new LatLng(locationServices.getLastLocation()))
+//                .title("Hello World!")
+//                .snippet("Welcome to my marker."));
+//    }
 
 
     // Add the mapView lifecycle to the activity's lifecycle methods
