@@ -4,7 +4,6 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
 
 import com.mapbox.mapboxsdk.MapboxAccountManager;
@@ -17,20 +16,15 @@ import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 
-import javax.inject.Inject;
 
 import de.toadette.poc.rtbm.R;
-import de.toadette.poc.rtbm.domain.model.vip.VipRepository;
 
 
 public class StartActivity extends FragmentActivity {
 
 
     private static final int PERMISSIONS_LOCATION = 0;
-    @Inject
-    VipRepository vipRepository;
     LocationServices locationServices;
-    FloatingActionButton floatingActionButton;
     private MapView mapView;
     private MapboxMap map;
     private double latitude = 53.075804;

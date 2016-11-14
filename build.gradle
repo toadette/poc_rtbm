@@ -136,7 +136,8 @@ task jacocoTestReport(type: JacocoReport) {
                        '**/*Fragment*.class',
                        '**/*Activity*.class',
                        '**/*View.class',
-                       '**/*Listener*.class']
+                       '**/*Listener*.class',
+                       '**/DataAdapter.class']
     )
 
     sourceDirectories = files('src/main/java')
