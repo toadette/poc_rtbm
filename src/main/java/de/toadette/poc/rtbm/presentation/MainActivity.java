@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ContextThemeWrapper;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
@@ -33,8 +34,10 @@ public class MainActivity extends AppCompatActivity {
     private void initViews() {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.card_recycler_view);
 //        recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+//        recyclerView.setLayoutManager(layoutManager);
         items = new ArrayList<>();
         items.add("Milch");
         items.add("Soft Cake");
