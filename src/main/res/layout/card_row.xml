@@ -30,9 +30,9 @@
 
             <Button
                 android:layout_width="100dp"
-                android:layout_gravity="right"
+                android:layout_gravity="start"
                 android:layout_height="match_parent"
-                android:text="Klick"
+                android:text="@string/click"
                 android:id="@+id/openMap"/>
         </LinearLayout>
 

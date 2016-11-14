@@ -1,4 +1,4 @@
-package de.toadette.poc.rtbm.domain.model.shoppingList;
+package de.toadette.poc.rtbm.domain.model.shoppinglist;
 
 import java.util.ArrayList;
 import java.util.List;

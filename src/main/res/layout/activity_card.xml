@@ -18,16 +18,18 @@
         android:id="@+id/fakeCall"
         android:onClick="fakeCall"
         android:background="@color/mapbox_blue"
-        android:text="Fake Call"
+        android:contentDescription="@string/describtion"
+        android:text="@string/fake_call"
         android:src="@drawable/ic_announcement_white_24dp"
         />
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/describtion"
         android:id="@+id/addNewItemToShoppingList"
         android:onClick="addNewItemToShoppingList"
         android:background="@color/mapbox_blue"
-        android:text="Add"
+        android:text="@string/add"
         android:src="@drawable/ic_add_shopping_cart_white_24dp"
         />
     <android.support.v7.widget.RecyclerView

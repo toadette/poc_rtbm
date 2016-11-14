@@ -13,12 +13,13 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.toadette.poc.rtbm.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<String> items;
+    private List<String> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,13 +68,14 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-
+                //todo: not empty
             }
 
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
+                //todo: not empty
             }
+
         });
     }
 
@@ -96,7 +98,4 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    public void addNewItemToShoppingList(View view) {
-
-    }
 }

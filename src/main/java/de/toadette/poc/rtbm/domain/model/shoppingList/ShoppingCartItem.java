@@ -1,4 +1,4 @@
-package de.toadette.poc.rtbm.domain.model.shoppingList;
+package de.toadette.poc.rtbm.domain.model.shoppinglist;
 
 import android.location.Location;
 
@@ -12,6 +12,18 @@ public class ShoppingCartItem {
 
     public ShoppingCartItemBuilder shoppingCartItemBuilder() {
         return new ShoppingCartItemBuilder();
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public String getDescribtion() {
+        return describtion;
     }
 
     public class ShoppingCartItemBuilder {

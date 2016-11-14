@@ -10,16 +10,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import de.toadette.poc.rtbm.R;
 
 
 class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
-    private ArrayList<String> items;
+    private List<String> items;
     private Activity parent;
 
-    DataAdapter(ArrayList<String> items, Activity parent) {
+    DataAdapter(List<String> items, Activity parent) {
         this.items = items;
         this.parent = parent;
     }
