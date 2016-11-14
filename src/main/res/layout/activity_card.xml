@@ -1,91 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:padding="16dp">
-
-    <android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="de.toadette.poc.rtbm.presentation.MainActivity"
+    android:orientation="vertical">
+    <TextView
         android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/welcomeText"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingTop="10dp"
+        android:textAlignment="center"/>
+    <ImageButton
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/cv"
-        >
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            >
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/person_photo"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_launcher"
-                android:contentDescription="@string/image"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/person_name"
-                android:layout_toEndOf="@id/person_photo"
-                android:layout_alignParentTop="true"
-                android:textSize="30sp"
-                android:text="@string/person" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/person_age"
-                android:layout_toEndOf="@id/person_photo"
-                android:layout_below="@+id/person_name"
-                tools:text="28" />
-
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
+        android:id="@+id/fakeCall"
+        android:onClick="fakeCall"
+        android:background="@color/mapbox_blue"
+        android:text="Fake Call"
+        android:src="@drawable/ic_announcement_white_24dp"
+        />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addNewItemToShoppingList"
+        android:onClick="addNewItemToShoppingList"
+        android:background="@color/mapbox_blue"
+        android:text="Add"
+        android:src="@drawable/ic_add_shopping_cart_white_24dp"
+        />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/card_recycler_view"
+        android:scrollbars="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/cv2"
-        >
+        android:layout_height="match_parent"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            >
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/person_photo2"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="@string/image"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/person_name2"
-                android:layout_toEndOf="@id/person_photo2"
-                android:layout_alignParentTop="true"
-                android:textSize="30sp"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/person_age2"
-                android:layout_toEndOf="@id/person_photo2"
-                android:layout_below="@+id/person_name2"
-                />
-
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
 </LinearLayout>

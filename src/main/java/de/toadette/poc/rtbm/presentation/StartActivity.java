@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
-import android.view.View;
 
 import com.mapbox.mapboxsdk.MapboxAccountManager;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
@@ -34,22 +33,28 @@ public class StartActivity extends FragmentActivity {
     FloatingActionButton floatingActionButton;
     private MapView mapView;
     private MapboxMap map;
+    private double latitude = 53.075804;
+    private double longitude = 8.807184;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.activity_map);
 
         MapboxAccountManager.start(this, getString(R.string.access_token));
         ((RtbmApplication) getApplication()).inject(this);
+
+//        if (getIntent().getExtras().get("location")!= null) {
+//            Location location = (Location) getIntent().getExtras().get("location");
+//            latitude = location.getLatitude();
+//            longitude = location.getLongitude();
+//        }
         mapView = (MapView) findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(MapboxMap mapboxMap) {
                 StartActivity.this.map = mapboxMap;
-                double latitude = 53.075804;
-                double longitude = 8.807184;
                 map.setCameraPosition(new CameraPosition.Builder()
                         .target(new LatLng(latitude, longitude))
                         .zoom(16)
@@ -61,15 +66,6 @@ public class StartActivity extends FragmentActivity {
 
             }
 
-        });
-        floatingActionButton = (FloatingActionButton) findViewById(R.id.location_toggle_fab);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (map != null) {
-                    setLocation();
-                }
-            }
         });
     }
 

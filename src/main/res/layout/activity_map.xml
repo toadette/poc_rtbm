@@ -12,13 +12,4 @@
         android:layout_height="match_parent"
         mapbox:style_url="@string/style_mapbox_streets" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/location_toggle_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="16dp"
-        android:src="@drawable/default_marker"
-        tools:backgroundTint="#E55E5E" />
-
 </android.support.design.widget.CoordinatorLayout>

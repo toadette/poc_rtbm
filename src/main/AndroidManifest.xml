@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat.Light"
         android:supportsRtl="true">
-        <activity android:name="de.toadette.poc.rtbm.presentation.StartActivity">
+        <activity android:name="de.toadette.poc.rtbm.presentation.MainActivity">
             <intent-filter android:label="@string/app_name">
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -29,6 +29,7 @@
 
             </intent-filter>
         </activity>
+        <activity android:name=".presentation.StartActivity"/>
         <service android:name="com.mapbox.mapboxsdk.telemetry.TelemetryService" />
     </application>
 
