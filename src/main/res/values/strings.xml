@@ -9,4 +9,10 @@
     <string name="fake_call">Fake Call</string>
     <string name="add_new_item">Neuen Eintrag hinzufügen</string>
     <string name="go_to_map">Zur Karte</string>
+    <string name="name">Name</string>
+    <string name="location">Ort</string>
+    <string name="speichern">Speichern</string>
+    <string name="Abbrechen">Cancel</string>
+    <string name="add_new_entry">Neuer Eintrag</string>
+    <string name="new_Description">Neue Beschreibung</string>
 </resources>

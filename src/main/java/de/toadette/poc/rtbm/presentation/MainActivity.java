@@ -1,6 +1,7 @@
 package de.toadette.poc.rtbm.presentation;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
@@ -40,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         items.add("KuchN");
         items.add("Käse");
         items.add("POMMES");
+        if (getIntent().getExtras() != null && getIntent().getExtras().get("newName") != null) {
+            items.add(getIntent().getExtras().getString("newName"));
+        }
         RecyclerView.Adapter adapter = new DataAdapter(items, this);
         recyclerView.setAdapter(adapter);
 
@@ -99,8 +104,9 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    public void addNewItemToShoppingList(View view) {
-        items.add("test");
+    public void addNewItemToShoppingList() {
+        Intent intent = new Intent(this, AddItemActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -108,5 +114,13 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_add_new_item) {
+            addNewItemToShoppingList();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
