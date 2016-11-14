@@ -4,7 +4,7 @@ package de.toadette.poc.rtbm.presentation;
 import dagger.Module;
 
 @Module(injects = {
-        StartActivity.class
+        MapActivity.class
 })
 public class RtbmModule {
 

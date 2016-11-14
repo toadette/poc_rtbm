@@ -29,7 +29,7 @@
 
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.StartActivity"/>
+        <activity android:name=".presentation.MapActivity"/>
         <service android:name="com.mapbox.mapboxsdk.telemetry.TelemetryService" />
     </application>
 

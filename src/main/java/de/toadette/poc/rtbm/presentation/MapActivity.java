@@ -5,6 +5,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
+import android.widget.TextView;
 
 import com.mapbox.mapboxsdk.MapboxAccountManager;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
@@ -16,11 +17,10 @@ import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 
-
 import de.toadette.poc.rtbm.R;
 
 
-public class StartActivity extends FragmentActivity {
+public class MapActivity extends FragmentActivity {
 
 
     private static final int PERMISSIONS_LOCATION = 0;
@@ -29,6 +29,8 @@ public class StartActivity extends FragmentActivity {
     private MapboxMap map;
     private double latitude = 53.075804;
     private double longitude = 8.807184;
+    private String name = "Default Marker";
+    private String describtion = "Beschreibung";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,25 +40,28 @@ public class StartActivity extends FragmentActivity {
         MapboxAccountManager.start(this, getString(R.string.access_token));
         ((RtbmApplication) getApplication()).inject(this);
 
-//        if (getIntent().getExtras().get("location")!= null) {
-//            Location location = (Location) getIntent().getExtras().get("location");
-//            latitude = location.getLatitude();
-//            longitude = location.getLongitude();
-//        }
+        if (getIntent().getExtras().get("name") != null) {
+            name = getIntent().getExtras().getString("name");
+        }
+        if (getIntent().getExtras().get("describtion") != null) {
+            describtion = getIntent().getExtras().getString("describtion");
+        }
+        TextView textView = (TextView) findViewById(R.id.textView);
+        textView.setText(name + ": " + describtion);
         mapView = (MapView) findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(MapboxMap mapboxMap) {
-                StartActivity.this.map = mapboxMap;
+                MapActivity.this.map = mapboxMap;
                 map.setCameraPosition(new CameraPosition.Builder()
                         .target(new LatLng(latitude, longitude))
                         .zoom(16)
                         .build());
                 mapboxMap.addMarker(new MarkerOptions()
                         .position(new LatLng(latitude, longitude))
-                        .title("Hello World!")
-                        .snippet("Welcome to my marker."));
+                        .title(name)
+                        .snippet(describtion));
 
             }
 

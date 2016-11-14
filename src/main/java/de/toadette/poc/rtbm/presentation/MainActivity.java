@@ -8,6 +8,8 @@ import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initViews() {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.card_recycler_view);
-        recyclerView.setHasFixedSize(true);
+//        recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         items = new ArrayList<>();
@@ -100,5 +102,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void addNewItemToShoppingList(View view) {
         items.add("test");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
     }
 }

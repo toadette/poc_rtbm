@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.List;
@@ -46,22 +46,24 @@ class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView textView1;
         private TextView textView2;
-        private Button action;
+        private ImageButton action;
 
         ViewHolder(View view) {
             super(view);
 
             textView1 = (TextView) view.findViewById(R.id.tv_1);
             textView2 = (TextView) view.findViewById(R.id.tv_2);
-            action = (Button) view.findViewById(R.id.openMap);
+            action = (ImageButton) view.findViewById(R.id.openMap);
             action.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(parent, StartActivity.class);
+                    Intent intent = new Intent(parent, MapActivity.class);
                     Location location = new Location("");
                     location.setLatitude(-118.408745);
                     location.setLongitude(33.941998);
                     intent.putExtra("location", location);
+                    intent.putExtra("name", textView1.getText());
+                    intent.putExtra("description", textView2.getText());
                     parent.startActivity(intent);
                 }
             });
