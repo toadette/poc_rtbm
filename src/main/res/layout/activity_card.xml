@@ -12,16 +12,6 @@
         android:textStyle="bold"
         android:paddingTop="10dp"
         android:textAlignment="center"/>
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/fakeCall"
-        android:onClick="fakeCall"
-        android:background="@color/mapbox_blue"
-        android:contentDescription="@string/description"
-        android:text="@string/fake_call"
-        android:src="@drawable/ic_announcement_white_24dp"
-        />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/card_recycler_view"
         android:scrollbars="vertical"

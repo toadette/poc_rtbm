@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     public void sendNotification(String text) {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.ic_launcher)
+                        .setSmallIcon(R.drawable.ic_announcement_white_24dp)
                         .setContentTitle("Du bist fast da....")
                         .setContentText("Kaufe hier folgendes: " + text);
         Intent resultIntent = new Intent(this, ShowItemActivity.class);
@@ -132,6 +132,11 @@ public class MainActivity extends AppCompatActivity {
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 // mId allows you to update the notification later on.
 //        mNotificationManager.notify(mId, mBuilder.build());
-        mNotificationManager.notify(notificationId++, mBuilder.build());
+        int length = 0;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            length = mNotificationManager.getActiveNotifications().length;
+            length++;
+        }
+        mNotificationManager.notify(length, mBuilder.build());
     }
 }
