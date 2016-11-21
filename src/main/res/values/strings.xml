@@ -15,4 +15,5 @@
     <string name="Abbrechen">Cancel</string>
     <string name="add_new_entry">Neuer Eintrag</string>
     <string name="new_Description">Neue Beschreibung</string>
+    <string name="purchased">Gekauft</string>
 </resources>

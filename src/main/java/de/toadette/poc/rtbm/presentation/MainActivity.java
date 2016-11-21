@@ -1,11 +1,13 @@
 package de.toadette.poc.rtbm.presentation;
 
-import android.content.DialogInterface;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
@@ -24,6 +26,7 @@ import de.toadette.poc.rtbm.R;
 public class MainActivity extends AppCompatActivity {
 
     private List<String> items;
+    private static int notificationId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
                     int position = rv.getChildAdapterPosition(child);
                     Toast.makeText(getApplicationContext(), "Jajaja kauf bitte: "
                             + items.get(position), Toast.LENGTH_SHORT).show();
+//                    Intent intent = new Intent(MainActivity.this, ShowItemActivity.class);
+//                    intent.putExtra("name",items.get(position));
+//                    startActivity(intent);
                 }
 
                 return false;
@@ -83,25 +89,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-    }
-
-    public void fakeCall(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this,
-                R.style.myDialog));
-        builder.setTitle("Punkt in der Nähe!")
-                .setMessage("Punkt 1 ist in der Nähe....")
-                .setPositiveButton("Geh ich hin", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // continue with delete
-                    }
-                })
-                .setNegativeButton("Jetzt nicht", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // do nothing
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
     }
 
     public void addNewItemToShoppingList() {
@@ -122,5 +109,29 @@ public class MainActivity extends AppCompatActivity {
             addNewItemToShoppingList();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void sendNotification(String text) {
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.ic_launcher)
+                        .setContentTitle("Du bist fast da....")
+                        .setContentText("Kaufe hier folgendes: " + text);
+        Intent resultIntent = new Intent(this, ShowItemActivity.class);
+        resultIntent.putExtra("name", text);
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addParentStack(MainActivity.class);
+        stackBuilder.addNextIntent(resultIntent);
+        PendingIntent resultPendingIntent =
+                stackBuilder.getPendingIntent(
+                        0,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+        mBuilder.setContentIntent(resultPendingIntent);
+        NotificationManager mNotificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+// mId allows you to update the notification later on.
+//        mNotificationManager.notify(mId, mBuilder.build());
+        mNotificationManager.notify(notificationId++, mBuilder.build());
     }
 }

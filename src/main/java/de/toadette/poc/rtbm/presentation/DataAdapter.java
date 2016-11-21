@@ -1,6 +1,5 @@
 package de.toadette.poc.rtbm.presentation;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.location.Location;
 import android.support.v7.widget.RecyclerView;
@@ -17,9 +16,9 @@ import de.toadette.poc.rtbm.R;
 
 class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     private List<String> items;
-    private Activity parent;
+    private MainActivity parent;
 
-    DataAdapter(List<String> items, Activity parent) {
+    DataAdapter(List<String> items, MainActivity parent) {
         this.items = items;
         this.parent = parent;
     }
@@ -49,6 +48,7 @@ class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         private TextView textView1;
         private TextView textView2;
         private ImageButton action;
+        private ImageButton action2;
 
         ViewHolder(View view) {
             super(view);
@@ -56,6 +56,7 @@ class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             textView1 = (TextView) view.findViewById(R.id.tv_1);
             textView2 = (TextView) view.findViewById(R.id.tv_2);
             action = (ImageButton) view.findViewById(R.id.openMap);
+            action2 = (ImageButton) view.findViewById(R.id.triggerCall);
             action.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -67,6 +68,12 @@ class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
                     intent.putExtra("name", textView1.getText());
                     intent.putExtra("description", textView2.getText());
                     parent.startActivity(intent);
+                }
+            });
+            action2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    parent.sendNotification(textView1.getText().toString());
                 }
             });
         }
