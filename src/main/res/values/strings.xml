@@ -6,7 +6,6 @@
     <string name="description">Beschreibung</string>
     <string name="description_item">Hmmm lecker %1$s!</string>
     <string name="click">Klick</string>
-    <string name="fake_call">Fake Call</string>
     <string name="add_new_item">Neuen Eintrag hinzufügen</string>
     <string name="go_to_map">Zur Karte</string>
     <string name="name">Name</string>

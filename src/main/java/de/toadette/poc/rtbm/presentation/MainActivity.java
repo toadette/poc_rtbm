@@ -26,7 +26,6 @@ import de.toadette.poc.rtbm.R;
 public class MainActivity extends AppCompatActivity {
 
     private List<String> items;
-    private static int notificationId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
